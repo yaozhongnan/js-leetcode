@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>冒泡排序</title>
+    <link rel="stylesheet" href="/public/global.css" />
+    <link rel="stylesheet" href="/public/AtomOneDark.css" />
+    <script src="/public/highlight.pack.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>冒泡排序</h1>
+      <p>1.比较相邻的两个元素，如果前一个比后一个大，则交换位置。</p>
+      <p>2.第一轮的时候最后一个元素应该是最大的一个。</p>
+      <p>
+        3.按照步骤一的方法进行相邻两个元素的比较，这个时候由于最后一个元素已经是最大的了，所以最后一个元素不用比较。
+      </p>
+      <pre>
+      <code lang="JavaScript">
+          function bubbleSort(array) {
+            // 第一个 for 循环减 1 是因为没有必要多进行一次循环
+            for (var i = 0; i < array.length - 1; i++) {
+        
+              // 减 i 因为新的数组后面已经排好了 i 位
+              // 减 1 是因为比较时比的是 j + 1 位，因此不需要遍历到最后一位
+              for (var j = 0; j < array.length - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                  var temp = array[j]
+                  array[j] = array[j + 1]
+                  array[j + 1] = temp
+                }
+              }
+              
+            }
+            return array
+          }
+      </code>
+    </pre>
+    </div>
+  </body>
+  <script>
+    function bubbleSort(array) {
+      // 第一个 for 循环减 1 是因为没有必要多进行一次循环
+      for (var i = 0; i < array.length - 1; i++) {
+        // 减 i 因为新的数组后面已经排好了 i 位
+        // 减 1 是因为比较时比的是 j + 1 位，因此不需要遍历到最后一位
+        for (var j = 0; j < array.length - i - 1; j++) {
+          if (array[j] > array[j + 1]) {
+            var temp = array[j];
+            array[j] = array[j + 1];
+            array[j + 1] = temp;
+          }
+        }
+      }
+      return array;
+    }
+
+    console.log(bubbleSort([3, 1, 55, 31, 654, 734, 13, 543, 34]));
+  </script>
+</html>

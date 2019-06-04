@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>无重复字符的最长子串</title>
+    <link rel="stylesheet" href="/public/global.css" />
+    <link rel="stylesheet" href="/public/AtomOneDark.css" />
+    <script src="/public/highlight.pack.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>无重复字符的最长子串</h1>
+      <p>给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。</p>
+      <p>示例:</p>
+      <pre>
+        <code lang="JavaScript">
+          输入: "abcabcbb"
+          输出: 3 
+          解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+
+          输入: "bbbbb"
+          输出: 1
+          解释: 因为无重复字符的最长子串是 "b"，所以其长度为 1。
+
+          输入: "pwwkew"
+          输出: 3
+          解释: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
+              请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
+        </code>
+      </pre>
+      <p>解题：（O）</p>
+      <pre>
+        <code lang="JavaScript">
+          var lengthOfLongestSubstring = function(s) {
+            if (s.length === 1) {
+              return 1;
+            }
+      
+            var str = '';
+            var len = 0;
+            for (var i = 0; i < s.length; i++) {
+              var char = s.charAt(i);
+              var index = str.indexOf(char);
+              if (index === -1) {
+                str += char;
+                len = len < str.length ? str.length : len;
+              } else {
+                str = str.substr(index + 1) + char;
+              }
+            }
+            return len;
+          };
+        </code>
+      </pre>
+    </div>
+  </body>
+  <script>
+    var lengthOfLongestSubstring = function(s) {
+      if (s.length === 1) {
+        return 1;
+      }
+
+      var str = '';
+      var len = 0;
+      for (var i = 0; i < s.length; i++) {
+        var char = s.charAt(i);
+        var index = str.indexOf(char);
+        if (index === -1) {
+          str += char;
+          len = len < str.length ? str.length : len;
+        } else {
+          str = str.substr(index + 1) + char;
+        }
+      }
+      return len;
+    };
+    console.log(lengthOfLongestSubstring('dvfcxsml'));
+  </script>
+</html>
