@@ -21,4 +21,12 @@ router.get('/003', (req, res) => {
   res.render('main/003.html')
 })
 
+router.get('/004', (req, res) => {
+  res.render('main/004.html')
+})
+
+router.get('/005', (req, res) => {
+  res.render('main/005.html')
+})
+
 module.exports = router

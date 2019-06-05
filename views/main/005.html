@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>最长回文子串</title>
+    <link rel="stylesheet" href="/public/global.css" />
+    <link rel="stylesheet" href="/public/AtomOneDark.css" />
+    <script src="/public/highlight.pack.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>最长回文子串</h1>
+      <p>
+        给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
+      </p>
+      <p>示例:</p>
+      <pre>
+        <code lang="JavaScript">
+          输入: "babad"
+          输出: "bab"
+          注意: "aba" 也是一个有效答案。
+
+          输入: "cbbd"
+          输出: "bb"
+        </code>
+      </pre>
+      <p>解题：（M）</p>
+      <pre>
+        <code lang="JavaScript">
+          var longestPalindrome = function(s) {
+            function check(str) {
+              return (
+                str ===
+                str
+                  .split('')
+                  .reverse()
+                  .join('')
+              );
+            }
+            var tmp = '';
+            var maxStr = '';
+            for (var i = 0; i < s.length; i++) {
+              tmp = '';
+              var char = s.charAt(i);
+              for (let j = i; j < s.length; j++) {
+                var char2 = s.charAt(j);
+                tmp += char2;
+                if (check(tmp)) {
+                  maxStr = tmp.length > maxStr.length ? tmp : maxStr;
+                }
+              }
+            }
+            return maxStr;
+          };
+        </code>
+      </pre>
+    </div>
+  </body>
+  <script>
+    var longestPalindrome = function(s) {
+      function check(str) {
+        return (
+          str ===
+          str
+            .split('')
+            .reverse()
+            .join('')
+        );
+      }
+      var tmp = '';
+      var maxStr = '';
+      for (var i = 0; i < s.length; i++) {
+        tmp = '';
+        var char = s.charAt(i);
+        for (let j = i; j < s.length; j++) {
+          var char2 = s.charAt(j);
+          tmp += char2;
+          if (check(tmp)) {
+            maxStr = tmp.length > maxStr.length ? tmp : maxStr;
+          }
+        }
+      }
+      return maxStr;
+    };
+    console.log(longestPalindrome('asdasdsa'));
+  </script>
+</html>

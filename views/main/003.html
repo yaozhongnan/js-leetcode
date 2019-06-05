@@ -44,13 +44,21 @@
       
             var str = '';
             var len = 0;
+      
+            // 遍历
             for (var i = 0; i < s.length; i++) {
+              // 取出 i 下标对应的字符
               var char = s.charAt(i);
+              // 查找 str 中是否存在该字符
               var index = str.indexOf(char);
+      
               if (index === -1) {
+                // 不存在则把该字符拼接给 str
                 str += char;
+                // 同时检验拼接后的字符串长度是否大于 len，大于的话重新定义 len
                 len = len < str.length ? str.length : len;
               } else {
+                // 存在就截取掉 str 中存在的那个字符，并拼上本次遍历的字符组成新的 str
                 str = str.substr(index + 1) + char;
               }
             }
@@ -68,18 +76,26 @@
 
       var str = '';
       var len = 0;
+
+      // 遍历
       for (var i = 0; i < s.length; i++) {
+        // 取出 i 下标对应的字符
         var char = s.charAt(i);
+        // 查找 str 中是否存在该字符
         var index = str.indexOf(char);
+
         if (index === -1) {
+          // 不存在则把该字符拼接给 str
           str += char;
+          // 同时检验拼接后的字符串长度是否大于 len，大于的话重新定义 len
           len = len < str.length ? str.length : len;
         } else {
+          // 存在就截取掉 str 中存在的那个字符，并拼上本次遍历的字符组成新的 str
           str = str.substr(index + 1) + char;
         }
       }
       return len;
     };
-    console.log(lengthOfLongestSubstring('dvfcxsml'));
+    console.log(lengthOfLongestSubstring('abcabcbb'));
   </script>
 </html>

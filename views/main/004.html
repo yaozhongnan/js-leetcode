@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>寻找两个有序数组的中位数</title>
+    <link rel="stylesheet" href="/public/global.css" />
+    <link rel="stylesheet" href="/public/AtomOneDark.css" />
+    <script src="/public/highlight.pack.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>寻找两个有序数组的中位数</h1>
+      <p>给定两个大小为 m 和 n 的有序数组 nums1 和 nums2。
+
+        请你找出这两个有序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。
+        
+        你可以假设 nums1 和 nums2 不会同时为空。</p>
+      <p>示例:</p>
+      <pre>
+        <code lang="JavaScript">
+          nums1 = [1, 3]
+          nums2 = [2]
+
+          则中位数是 2.0
+
+          nums1 = [1, 2]
+          nums2 = [3, 4]
+
+          则中位数是 (2 + 3)/2 = 2.5
+        </code>
+      </pre>
+      <p>解题：（M）</p>
+      <pre>
+        <code lang="JavaScript">
+          var findMedianSortedArrays = function(nums1, nums2) {
+            // 合并两个数组
+            var array = nums1.concat(nums2);
+            var index;
+            // 从小到大排序，不能直接使用 sort()，它排不了负数
+            array.sort(function (a, b) {
+              return a - b;
+            });
+            // 判断数组的长度是偶数还是奇数
+            if (array.length % 2 === 0) {
+              index = array.length / 2;
+              return (array[index - 1] + array[index]) / 2;
+            } else {
+              index = (array.length + 1) / 2;
+              return array[index - 1];
+            }
+          };
+        </code>
+      </pre>
+    </div>
+  </body>
+  <script>
+    var findMedianSortedArrays = function(nums1, nums2) {
+      // 合并两个数组
+      var array = nums1.concat(nums2);
+      var index;
+      // 从小到大排序，不能直接使用 sort()，它排不了负数
+      array.sort(function (a, b) {
+        return a - b;
+      });
+      // 判断数组的长度是偶数还是奇数
+      if (array.length % 2 === 0) {
+        index = array.length / 2;
+        return (array[index - 1] + array[index]) / 2;
+      } else {
+        index = (array.length + 1) / 2;
+        return array[index - 1];
+      }
+    };
+    console.log(findMedianSortedArrays([3], [-2, -1]));
+  </script>
+</html>
